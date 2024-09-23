@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4</title>
+    <link rel="stylesheet" href="lab4.css">
+</head>
+<body>
+    <h1 id="head">Lab 4</h1>
+    <div class="container">
+        <div class="box">
+            <form id="nameForm" onsubmit="return giveAlert()">
+                <label for="nameIn">Enter your name:</label>
+                <input type="text" id="nameIn" name="name" required>
+                <button type="submit">Alert Me!</button>
+            </form>
+        </div>
+        <div class="box">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+        <div class="box">
+            <form id="textForm" onsubmit="return validate()">
+                <label for="textIn">Enter text to validate:</label>
+                <input type="text" id="textIn" name="text" required>
+                <button type="submit">Validate Text</button>
+        </div>
+        <div class="box">
+            <button type="button" onclick="addText()">Add Text</button>
+        </div>
+    </div>
+
+    <script>
+        function giveAlert() {
+            var name = document.getElementById('nameIn').value;
+            alert("Hi " + name + "!");
+            return false;
+        }
+
+        function changeColor(){
+            if(document.body.style.backgroundColor == 'lightcoral'){
+                document.body.style.backgroundColor = 'lightblue';
+            } else {
+                document.body.style.backgroundColor = 'lightcoral'
+            }
+        }
+
+        function validate() {
+            var text = document.getElementById('textIn').value;
+            var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/; 
+            if (validation.test(text)) {
+                alert("Special characters detected!");
+            } else {
+                alert("No special characters found.");
+            }
+        }
+
+        function addText() {
+            var heading = document.getElementById("head");
+            heading.innerHTML += " Add Text"; 
+        }
+
+    </script>
+
+</body>
+</html>
